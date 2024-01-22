@@ -10,6 +10,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject usernameCanvas ;
     [SerializeField] private GameObject multiplayerCanvas ;
 
+    [SerializeField] private GameObject LobbyFullTxt;
+
     [SerializeField] private TMP_InputField usernameInput;
     [SerializeField] private TMP_InputField createGameInput;
     [SerializeField] private TMP_InputField joinGameInput;
@@ -34,7 +36,7 @@ public class MenuController : MonoBehaviour
         Debug.Log("Connected");
     }
 
-    public void changeUserNameInput()
+    public void ChangeUserNameInput()
     {
         if (usernameInput.text.Length >= minCharacterAmountUSR)
         {
@@ -46,7 +48,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void setUserName()
+    public void SetUserName()
     {
         usernameCanvas.SetActive(false);
         PhotonNetwork.playerName= usernameInput.text;
@@ -62,10 +64,22 @@ public class MenuController : MonoBehaviour
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 5;
         PhotonNetwork.JoinOrCreateRoom(joinGameInput.text, roomOptions, TypedLobby.Default);
+
+        if (PhotonNetwork.countOfPlayers >= 5)
+        {
+            LobbyFullTxt.SetActive(true);
+            Invoke("LobbyFullDissapear", 3);
+        }
+    }
+
+    private void LobbyFullDissapear()
+    {
+        LobbyFullTxt.SetActive(false);
     }
 
     private void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Level");
     }
+  
 }

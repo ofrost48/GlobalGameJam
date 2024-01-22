@@ -1,20 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Net.Sockets;
-using System.Runtime.ConstrainedExecution;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEngine;
-using static Unity.Burst.Intrinsics.X86;
-using static UnityEditor.PlayerSettings;
 
-public class Test : MonoBehaviour
-{
   /*  SHREK
     Once upon a time there was a lovely
             princess.But she had an enchantment
@@ -108,4 +92,4 @@ public class Test : MonoBehaviour
                          up a piece of paper.Reads.) "Wanted. 
                          Fairy tale creatures."(He sighs and 
                          throws the paper over his shoulder.) */
-}
+
