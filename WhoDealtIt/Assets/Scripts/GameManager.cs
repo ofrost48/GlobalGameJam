@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     {
         CheckInput();
         PingText.text = "PING:" + PhotonNetwork.GetPing();
-        PingToggle.GetComponent<Toggle>().isOn = PingOff;
     }
 
     //Open PauseUI

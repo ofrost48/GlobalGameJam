@@ -21,7 +21,6 @@ public class MenuController : MonoBehaviour
     GameManager gameManager;
 
     public GameObject SettingsUI;
-    public GameObject PingToggle;
 
     private int minCharacterAmountUSR = 3;
 
@@ -35,11 +34,6 @@ public class MenuController : MonoBehaviour
         usernameCanvas.SetActive(true);
         usernameInput.characterLimit = 12;
         
-    }
-
-    private void Update()
-    {
-        PingToggle.GetComponent<Toggle>().isOn = gameManager.PingOff;
     }
 
     private void OnConnectedToMaster()
