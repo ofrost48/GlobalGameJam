@@ -18,7 +18,7 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private GameObject startButton;
 
-    GameManager gameManager;
+    [SerializeField] private GameManager gameManager;
 
     public GameObject SettingsUI;
 
@@ -108,7 +108,6 @@ public class MenuController : MonoBehaviour
 
     public void TogglePingGameManager()
     {
-        gameManager.TogglePing();
-
+        GameManager.ChangedPingOption = true;
     }
 }

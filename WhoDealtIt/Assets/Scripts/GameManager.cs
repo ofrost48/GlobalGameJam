@@ -23,11 +23,14 @@ public class GameManager : MonoBehaviour
 
     private bool PingOn = false;
 
+    public static bool ChangedPingOption = false;
 
     private void Awake()
     {
-        GameCanvas.SetActive(true);
-        
+        if(GameCanvas != null)
+        {
+            GameCanvas.SetActive(true);
+        }
     }
 
     // Gets Input
@@ -35,7 +38,12 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         CheckInput();
-        PingText.text = "PING:" + PhotonNetwork.GetPing();
+        if(Ping != null)
+        {
+            PingText.text = "PING:" + PhotonNetwork.GetPing();
+        }
+        
+
     }
 
     //Open PauseUI
@@ -61,6 +69,11 @@ public class GameManager : MonoBehaviour
         PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector2(this.transform.position.x * randomValue, this.transform.position.y), Quaternion.identity, 0);
         GameCanvas.SetActive(false);
         SceneCamera.SetActive(false);
+
+        if(ChangedPingOption)
+        {
+            SettingsUI.GetComponentInChildren<Toggle>().isOn = true;
+        }
     }
 
     // PauseMenu UI
