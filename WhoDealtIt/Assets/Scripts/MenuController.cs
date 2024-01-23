@@ -28,6 +28,7 @@ public class MenuController : MonoBehaviour
     private void Start()
     {
         usernameCanvas.SetActive(true);
+        usernameInput.characterLimit = 12;
     }
 
     private void OnConnectedToMaster()

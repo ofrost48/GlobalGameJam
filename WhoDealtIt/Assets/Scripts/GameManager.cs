@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,10 +11,15 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerPrefab;
     public GameObject GameCanvas;
     public GameObject SceneCamera;
-
+    public TMP_Text PingText;
     private void Awake()
     {
         GameCanvas.SetActive(true);
+    }
+
+    private void Update()
+    {
+        PingText.text = "PING:" + PhotonNetwork.GetPing();
     }
 
     public void SpawnPlayer()
