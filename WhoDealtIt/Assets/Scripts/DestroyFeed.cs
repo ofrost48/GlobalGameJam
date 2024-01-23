@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyFeed : MonoBehaviour
 {
-    public float DestroyTime = 4f;
+    public float DestroyTime = 8f;
 
     private void OnEnable()
     {

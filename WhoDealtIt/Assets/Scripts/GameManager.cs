@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject obj = Instantiate(PlayerFeed, new Vector2(0, 0), Quaternion.identity); 
         obj.transform.SetParent(FeedGrid.transform, false);
-        obj.GetComponent<TMP_Text>().text = player.name + " left the game";
+        obj.GetComponent<TMP_Text>().text = player.name + " joined the game";
         obj.GetComponent<TMP_Text>().color = Color.green;
     }
 
