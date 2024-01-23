@@ -17,8 +17,6 @@ public class Player : Photon.MonoBehaviour
     float horizontalInput;
     float verticalInput;
     Vector2 moveDirection;
-    float xDirection;
-    float yDirection;
 
     private void Awake()
     {
@@ -54,14 +52,13 @@ public class Player : Photon.MonoBehaviour
     {
         if (horizontalInput != 0 || verticalInput != 0)
         {
-            rb.velocity = Vector3.zero;
             moveDirection = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
 
             rb.AddForce(moveDirection, ForceMode2D.Impulse);
         }
         else
         {
-            rb.velocity = Vector3.zero;
+            rb.velocity = Vector2.zero;
         }
     }
 }
