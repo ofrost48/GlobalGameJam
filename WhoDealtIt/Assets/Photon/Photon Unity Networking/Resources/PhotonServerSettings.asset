@@ -37,4 +37,6 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupItems
   - RequestForPickupTimes
+  - CheckInput
+  - MovePlayer
   DisableAutoOpenWizard: 1

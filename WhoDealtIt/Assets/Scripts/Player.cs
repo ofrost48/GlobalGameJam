@@ -35,17 +35,18 @@ public class Player : Photon.MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        photonView.RPC("MovePlayer", PhotonTargets.AllBuffered);
     }
 
     private void Update()
     {
         if (photonView.isMine)
         {
-            CheckInput();
+            photonView.RPC("CheckInput", PhotonTargets.AllBuffered);
         }
     }
 
+    [PunRPC]
     private void CheckInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -64,6 +65,7 @@ public class Player : Photon.MonoBehaviour
         }
     }
 
+    [PunRPC]
     private void MovePlayer()
     {
         if (horizontalInput != 0 || verticalInput != 0)
@@ -77,6 +79,9 @@ public class Player : Photon.MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
+
+    
+
 }
 
 

@@ -107,7 +107,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fb9d568572c5eea45a811b724658d4d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6.4, y: 6.4}
@@ -128,12 +128,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39dee37f6b3638147839624957cd5711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonVieww: {fileID: 0}
+  photonVieww: {fileID: 6330011432209948381}
   rb: {fileID: 8707066464120771735}
   anim: {fileID: 0}
   playerCamera: {fileID: 2656440110165607180}
   sr: {fileID: 9158922225206324687}
   playerNameText: {fileID: 0}
+  moveSpeed: 0
 --- !u!114 &6330011432209948381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +151,7 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 3
+  synchronization: 0
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
