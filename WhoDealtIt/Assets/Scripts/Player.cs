@@ -25,7 +25,7 @@ public class Player : Photon.MonoBehaviour
     private void Awake()
     {
         rb.gravityScale = 0.0f;
-        moveSpeed = 10f;
+        moveSpeed = 150f;
         xDirection = 0.0f;
         yDirection = 0.0f;
 
@@ -75,7 +75,7 @@ public class Player : Photon.MonoBehaviour
         if (horizontalInput != 0 || verticalInput != 0)
         { 
 
-            photonView.RPC("AddForce", PhotonTargets.AllBuffered);
+            photonView.RPC("AddVelocity", PhotonTargets.AllBuffered);
         }
         else
         {
@@ -84,10 +84,10 @@ public class Player : Photon.MonoBehaviour
     }
 
     [PunRPC]
-    public void AddForce()
+    public void AddVelocity()
     {
         moveDirection = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
-        rb.AddForce(moveDirection, ForceMode2D.Impulse);
+        rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
     }
 
     [PunRPC]
