@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject GameCanvas;
     public GameObject SceneCamera;
     public TMP_Text PingText;
+    public GameObject PauseUI;
+    private bool Off = false;
+
     private void Awake()
     {
         GameCanvas.SetActive(true);
@@ -19,7 +22,22 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        CheckInput();
         PingText.text = "PING:" + PhotonNetwork.GetPing();
+    }
+
+    private void CheckInput()
+    {
+        if(Off && Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUI.SetActive(false);
+            Off = false;
+        }
+        else if (!Off && Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUI.SetActive(true);
+            Off = true;
+        }
     }
 
     public void SpawnPlayer()
@@ -30,5 +48,12 @@ public class GameManager : MonoBehaviour
         GameCanvas.SetActive(false);
         SceneCamera.SetActive(false);
     }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel("Menu");
+    }
+
 }
 
