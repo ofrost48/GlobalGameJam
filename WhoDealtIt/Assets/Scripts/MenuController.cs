@@ -80,7 +80,7 @@ public class MenuController : MonoBehaviour
 
     private void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Level");
+        PhotonNetwork.LoadLevel("Lobby");
     }
 
     public void QuitGame()
