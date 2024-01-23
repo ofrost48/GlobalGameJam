@@ -1351,6 +1351,7 @@ MonoBehaviour:
   createGameInput: {fileID: 273599850}
   joinGameInput: {fileID: 1368998746}
   startButton: {fileID: 1193758429}
+  gameManager: {fileID: 1821302567}
   SettingsUI: {fileID: 888699276}
 --- !u!4 &383110996
 Transform:
@@ -1365,7 +1366,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &409252652
 GameObject:
@@ -1433,7 +1434,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &441628083
 GameObject:
@@ -3215,7 +3216,7 @@ RectTransform:
   - {fileID: 819451314}
   - {fileID: 888699280}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5018,6 +5019,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797381526}
   m_CullTransparentMesh: 1
+--- !u!1 &1821302566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1821302568}
+  - component: {fileID: 1821302567}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1821302567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821302566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3173af667f45d4493feae5b280f74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerPrefab: {fileID: 8822862982232370053, guid: bd87956f1fc8e5f4f98c273e044e5b02, type: 3}
+  GameCanvas: {fileID: 0}
+  SceneCamera: {fileID: 0}
+  PingText: {fileID: 0}
+  PauseUI: {fileID: 0}
+  PlayerFeed: {fileID: 7185701840565885383, guid: 484644c0710cb7d4ebe487164ba1188a, type: 3}
+  FeedGrid: {fileID: 0}
+  Ping: {fileID: 0}
+  SettingsUI: {fileID: 0}
+--- !u!4 &1821302568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821302566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 456.8482, y: 527.4823, z: -19.191954}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1834608373
 GameObject:
   m_ObjectHideFlags: 0
