@@ -788,7 +788,7 @@ MonoBehaviour:
   versionName: ' 0.1 '
   usernameCanvas: {fileID: 1313468434}
   multiplayerCanvas: {fileID: 460375096}
-  LobbyFullTxt: {fileID: 0}
+  LobbyFullTxt: {fileID: 819451313}
   usernameInput: {fileID: 950008281}
   createGameInput: {fileID: 273599850}
   joinGameInput: {fileID: 1368998746}

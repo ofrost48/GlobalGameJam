@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3173af667f45d4493feae5b280f74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 18771539194118104, guid: bd87956f1fc8e5f4f98c273e044e5b02, type: 3}
+  PlayerPrefab: {fileID: 8822862982232370053, guid: bd87956f1fc8e5f4f98c273e044e5b02, type: 3}
   GameCanvas: {fileID: 1999993028}
   SceneCamera: {fileID: 619264637}
 --- !u!4 &543103635

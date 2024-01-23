@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class Player : Photon.MonoBehaviour
     public Animator anim;
     public GameObject playerCamera;
     public SpriteRenderer sr;
-    public Text playerNameText;
+    public TMP_Text playerNameText;
 
     public float moveSpeed;
     float horizontalInput;
@@ -31,6 +32,12 @@ public class Player : Photon.MonoBehaviour
         if (photonView.isMine)
         {
             playerCamera.SetActive(true);
+            playerNameText.text = PhotonNetwork.playerName;
+        }
+        else
+        {
+            playerNameText.text = photonView.owner.name;
+            playerNameText.color = Color.white;
         }
     }
 
