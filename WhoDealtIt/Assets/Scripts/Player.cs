@@ -17,11 +17,15 @@ public class Player : Photon.MonoBehaviour
     float horizontalInput;
     float verticalInput;
     Vector2 moveDirection;
+    float xDirection;
+    float yDirection;
 
     private void Awake()
     {
         rb.gravityScale = 0.0f;
         moveSpeed = 10f;
+        xDirection = 0.0f;
+        yDirection = 0.0f;
 
         if (photonView.isMine)
         {
@@ -46,6 +50,18 @@ public class Player : Photon.MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        if(xDirection != horizontalInput)
+        {
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+            xDirection = horizontalInput;
+        }
+
+        if(yDirection != verticalInput)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0.0f);
+            yDirection = verticalInput;
+        }
     }
 
     private void MovePlayer()
