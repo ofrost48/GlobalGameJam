@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject Ping;
 
     public GameObject SettingsUI;
-    private bool PingOff = false;
+    private bool PingOn = false;
 
     private void Awake()
     {
@@ -82,13 +82,15 @@ public class GameManager : MonoBehaviour
 
     public void TogglePing()
     {
-        if (PingOff)
+        if (PingOn)
         {
             Ping.SetActive(false);
+            PingOn = false;
         }  
         else
         {
             Ping.SetActive(true);
+            PingOn = true;
         }
     }
 
