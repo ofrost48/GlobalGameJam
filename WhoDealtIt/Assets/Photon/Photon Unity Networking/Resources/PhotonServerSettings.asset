@@ -39,4 +39,8 @@ MonoBehaviour:
   - RequestForPickupTimes
   - CheckInput
   - MovePlayer
+  - XDirection
+  - YDirection
+  - AddForce
+  - Vector2Zero
   DisableAutoOpenWizard: 1

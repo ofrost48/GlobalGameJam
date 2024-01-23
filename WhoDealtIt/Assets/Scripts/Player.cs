@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -33,55 +34,58 @@ public class Player : Photon.MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        photonView.RPC("MovePlayer", PhotonTargets.AllBuffered);
-    }
+  
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (photonView.isMine)
         {
-            photonView.RPC("CheckInput", PhotonTargets.AllBuffered);
+            CheckInput();
+            MovePlayer();
         }
     }
 
-    [PunRPC]
     private void CheckInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if(xDirection != horizontalInput)
+        if (xDirection != horizontalInput)
         {
             rb.velocity = new Vector2(0.0f, rb.velocity.y);
             xDirection = horizontalInput;
         }
 
-        if(yDirection != verticalInput)
+        if (yDirection != verticalInput)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0.0f);
             yDirection = verticalInput;
         }
     }
 
-    [PunRPC]
     private void MovePlayer()
     {
         if (horizontalInput != 0 || verticalInput != 0)
-        {
-            moveDirection = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
+        { 
 
-            rb.AddForce(moveDirection, ForceMode2D.Impulse);
+            photonView.RPC("AddForce", PhotonTargets.AllBuffered);
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            photonView.RPC("Vector2Zero", PhotonTargets.AllBuffered);
         }
     }
 
-    
+    [PunRPC]
+    public void AddForce()
+    {
+        moveDirection = new Vector2(horizontalInput * moveSpeed, verticalInput * moveSpeed);
+        rb.AddForce(moveDirection, ForceMode2D.Impulse);
+    }
 
+    [PunRPC]
+    private void Vector2Zero()
+    {
+        rb.velocity = Vector2.zero;
+    }
 }
-
-
