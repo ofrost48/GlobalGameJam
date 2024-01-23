@@ -30,9 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
         PhotonNetwork.automaticallySyncScene = true;
-        SpawnPlayerMansion();
 
         if (GameCanvas != null)
         {
@@ -49,8 +47,6 @@ public class GameManager : MonoBehaviour
         {
             PingText.text = "PING:" + PhotonNetwork.GetPing();
         }
-
-
     }
 
     //Open PauseUI
@@ -83,26 +79,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SpawnPlayerMansion()
+    public void MansionSpawn()
     {
         if (SceneManager.GetActiveScene().name == "Mansion")
         {
-            float randomValue = Random.Range(-1f, 1f);
-
-            PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector2(this.transform.position.x * randomValue, this.transform.position.y), Quaternion.identity, 0);
             SceneCamera.SetActive(false);
-
-            if (ChangedPingOption)
-            {
-                SettingsUI.GetComponentInChildren<Toggle>().isOn = true;
-            }
         }
     }
+
 
     // PauseMenu UI
 
     public void LeaveRoom()
     {
+        Destroy(PlayerPrefab);
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel("Menu");
     }
@@ -156,7 +146,12 @@ public class GameManager : MonoBehaviour
 
     public void MansionLVL()
     {
-        PhotonNetwork.LoadLevel("Mansion");
+        if (PhotonNetwork.isMasterClient)
+        {
+            PhotonNetwork.room.IsOpen = false;
+            PhotonNetwork.room.IsVisible = false;
+            PhotonNetwork.LoadLevel("Mansion");
+         }
     }
 
     private void OpenDebug()
