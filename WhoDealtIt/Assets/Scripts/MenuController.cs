@@ -82,5 +82,11 @@ public class MenuController : MonoBehaviour
     {
         PhotonNetwork.LoadLevel("Level");
     }
-  
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("QuitGamne_Success");
+
+    }
 }
