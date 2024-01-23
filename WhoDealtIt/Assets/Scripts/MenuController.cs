@@ -18,6 +18,9 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private GameObject startButton;
 
+    public GameObject SettingsUI;
+    private bool PingOff = false;
+
     private int minCharacterAmountUSR = 3;
 
     private void Awake()
@@ -89,4 +92,15 @@ public class MenuController : MonoBehaviour
         Debug.Log("QuitGamne_Success");
 
     }
+
+    public void OpenSettings()
+    {
+        SettingsUI.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        SettingsUI.SetActive(false);
+    }
+
 }
