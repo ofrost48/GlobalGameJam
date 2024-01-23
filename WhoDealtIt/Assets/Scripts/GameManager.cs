@@ -20,11 +20,13 @@ public class GameManager : MonoBehaviour
     public GameObject Ping;
 
     public GameObject SettingsUI;
-    private bool PingOff = false;
+    public GameObject PingToggle;
+    public bool PingOff;
 
     private void Awake()
     {
         GameCanvas.SetActive(true);
+        
     }
 
     // Gets Input
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         CheckInput();
         PingText.text = "PING:" + PhotonNetwork.GetPing();
+        PingToggle.GetComponent<Toggle>().isOn = PingOff;
     }
 
     //Open PauseUI
@@ -82,13 +85,17 @@ public class GameManager : MonoBehaviour
 
     public void TogglePing()
     {
-        if (PingOff)
+        if (PingOff == true)
         {
             Ping.SetActive(false);
+            PingToggle.GetComponent<Toggle>().isOn = false;
+
         }  
         else
         {
             Ping.SetActive(true);
+            PingToggle.GetComponent<Toggle>().isOn = true;
+
         }
     }
 

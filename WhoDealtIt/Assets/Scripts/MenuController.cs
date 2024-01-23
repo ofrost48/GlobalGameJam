@@ -18,8 +18,10 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private GameObject startButton;
 
+    GameManager gameManager;
+
     public GameObject SettingsUI;
-    private bool PingOff = false;
+    public GameObject PingToggle;
 
     private int minCharacterAmountUSR = 3;
 
@@ -32,6 +34,12 @@ public class MenuController : MonoBehaviour
     {
         usernameCanvas.SetActive(true);
         usernameInput.characterLimit = 12;
+        
+    }
+
+    private void Update()
+    {
+        PingToggle.GetComponent<Toggle>().isOn = gameManager.PingOff;
     }
 
     private void OnConnectedToMaster()
@@ -96,6 +104,7 @@ public class MenuController : MonoBehaviour
     public void OpenSettings()
     {
         SettingsUI.SetActive(true);
+
     }
 
     public void CloseSettings()
@@ -103,4 +112,9 @@ public class MenuController : MonoBehaviour
         SettingsUI.SetActive(false);
     }
 
+    public void TogglePingGameManager()
+    {
+        gameManager.TogglePing();
+
+    }
 }

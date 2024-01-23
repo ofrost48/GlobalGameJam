@@ -718,6 +718,8 @@ MonoBehaviour:
   FeedGrid: {fileID: 1218964857}
   Ping: {fileID: 509670529}
   SettingsUI: {fileID: 1407867840}
+  PingToggle: {fileID: 1752535233}
+  PingOff: 0
 --- !u!4 &543103635
 Transform:
   m_ObjectHideFlags: 0
