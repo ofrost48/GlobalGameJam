@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public GameObject PauseUI;
     private bool Off = false;
 
+    public GameObject PlayerFeed;
+    public GameObject FeedGrid;
+
     private void Awake()
     {
         GameCanvas.SetActive(true);
@@ -55,5 +58,21 @@ public class GameManager : MonoBehaviour
         PhotonNetwork.LoadLevel("Menu");
     }
 
+
+    private void OnPhotonPlayerConnected(PhotonPlayer player)
+    {
+        GameObject obj = Instantiate(PlayerFeed, new Vector2(0, 0), Quaternion.identity); 
+        obj.transform.SetParent(FeedGrid.transform, false);
+        obj.GetComponent<TMP_Text>().text = player.name + "JOINED THE GAME";
+        obj.GetComponent<TMP_Text>().color = Color.green;
+    }
+
+    private void OnPhotonPlayerDisconnected(PhotonPlayer player)
+    {
+        GameObject obj = Instantiate(PlayerFeed, new Vector2(0, 0), Quaternion.identity);
+        obj.transform.SetParent(FeedGrid.transform, false);
+        obj.GetComponent<TMP_Text>().text = player.name + "LEFT THE GAME";
+        obj.GetComponent<TMP_Text>().color = Color.red;
+    }
 }
 
