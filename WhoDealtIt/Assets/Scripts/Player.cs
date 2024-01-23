@@ -35,6 +35,8 @@ public class Player : Photon.MonoBehaviour
             playerNameText.text = photonView.owner.name;
             playerNameText.color = Color.white;
         }
+
+        DontDestroyOnLoad(gameObject);
     }
 
   
