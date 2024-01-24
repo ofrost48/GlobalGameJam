@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public static bool ChangedPingOption = false;
 
+    private float spawnPosition;//for spawning players around table assigned in func used (MansionSpawn)
+
     private void Awake()
     {
         PhotonNetwork.automaticallySyncScene = true;
@@ -144,19 +146,28 @@ public class GameManager : MonoBehaviour
             PhotonNetwork.room.IsOpen = false;
             PhotonNetwork.room.IsVisible = false;
             PhotonNetwork.LoadLevel("Mansion");
-            PlayerPrefab.GetComponent<Player>().MoveplayerlocationsMansion();
+            //PlayerPrefab.GetComponent<Player>().MoveplayerlocationsMansion();
 
-
+            MansionSpawn();
         }
+        
     }
 
-  /*  [PunRPC]
     public void MansionSpawn()
     {
-        if (SceneManager.GetActiveScene().name == "Mansion")
+        Debug.Log("Spawned at the mansion");
+
+        spawnPosition = 300f;
+
+        GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in playersInScene)
         {
-            MoveplayerlocationsMansion();
+            Debug.Log(player.transform.position);
+            player.transform.position = new Vector2(spawnPosition, 652f);
+            spawnPosition += 350f;
         }
-    } */
+
+    }
 }
 

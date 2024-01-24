@@ -82,11 +82,4 @@ public class Player : Photon.MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
-    [PunRPC]
-    public void MoveplayerlocationsMansion()
-    {
-        Debug.Log("MANSION WORKS");
-
-        transform.position = new Vector2(1001f, 652f);
-    }
 }
