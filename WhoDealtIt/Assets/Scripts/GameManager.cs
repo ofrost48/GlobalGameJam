@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using ExitGames.Client.Photon.StructWrapping;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class GameManager : MonoBehaviour
     public GameObject PauseUI;
     public GameObject DebugUI;
     private bool Off = false;
-    private bool DBOff = false;
 
     public GameObject PlayerFeed;
     public GameObject FeedGrid;
@@ -79,13 +79,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void MansionSpawn()
-    {
-        if (SceneManager.GetActiveScene().name == "Mansion")
-        {
-            SceneCamera.SetActive(false);
-        }
-    }
 
 
     // PauseMenu UI
@@ -151,35 +144,39 @@ public class GameManager : MonoBehaviour
             PhotonNetwork.room.IsOpen = false;
             PhotonNetwork.room.IsVisible = false;
             PhotonNetwork.LoadLevel("Mansion");
-         }
-    }
-
-    private void OpenDebug()
-    {
-        if (DBOff && Input.GetKeyDown(KeyCode.F1))
-        {
-            DebugUI.SetActive(false);
-            DBOff = false;
-        }
-        else if (!DBOff && Input.GetKeyDown(KeyCode.F1))
-        {
-            DebugUI.SetActive(true);
-            DBOff = true;
+            MansionSpawn();
         }
     }
 
-
-    /*For Future Refrence 
-     
-    public void OnClick_StartGame()
+    private void MoveplayerlocationsMansion()
     {
-         if (PhotonNetwork.IsMasterClient)
-      {
-         PhotonNetwork.CurrentRoom.IsOpen = false;
-         PhotonNetwork.CurrentRoom.IsVisible = false;
-         PhotonNetwork.LoadLevel("Mansion")
-      }
+        if (PhotonNetwork.isMasterClient)
+        {
+           transform.position = new Vector2(1001f, 652f);
+        }
+        else if (PhotonNetwork.player.ID == 1002)
+        {
+            transform.position = new Vector2(350f, 652f);
+        }
+        else if (PhotonNetwork.player.ID == 1003)
+        {
+            transform.position = new Vector2(665f, 652f);
+        }
+        else if (PhotonNetwork.player.ID == 1004)
+        {
+            transform.position = new Vector2(1400f, 652f);
+        }
+        else if (PhotonNetwork.player.ID == 1005)
+        {
+            transform.position = new Vector2(1805f, 652f);
+        }
     }
-    */
+    public void MansionSpawn()
+    {
+        if (SceneManager.GetActiveScene().name == "Mansion")
+        {
+            MoveplayerlocationsMansion();
+        }
+    }
 }
 

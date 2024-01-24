@@ -42,4 +42,5 @@ MonoBehaviour:
   - Vector2Zero
   - AddVelocity
   - JoinMansion
+  - MoveplayerlocationsMansion
   DisableAutoOpenWizard: 1
