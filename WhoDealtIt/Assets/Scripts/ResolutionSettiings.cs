@@ -16,12 +16,8 @@ public class ResolutionSettiings : MonoBehaviour
 
     public void Start()
     {
-        //fullscreen stuff
-        //Screen.fullScreen = true;
         fullscreen = true;
-        //
 
-        //res stuff
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
 
@@ -50,8 +46,7 @@ public class ResolutionSettiings : MonoBehaviour
         resDropdown.AddOptions(options);
         resDropdown.value = currentResIndex;
         resDropdown.RefreshShownValue();
-
-         
+        
     }
 
     public void Fullscreen()
