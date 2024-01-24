@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public TMP_Text PingText;
     public GameObject PauseUI;
     public GameObject DebugUI;
-    public PhotonView PhotonView;
     private bool Off = false;
 
     public GameObject PlayerFeed;
@@ -34,6 +33,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         PhotonNetwork.automaticallySyncScene = true;
+       
 
         if (GameCanvas != null)
         {
