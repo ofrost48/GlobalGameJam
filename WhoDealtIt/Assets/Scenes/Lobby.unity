@@ -715,6 +715,7 @@ MonoBehaviour:
   PingText: {fileID: 921346381}
   PauseUI: {fileID: 318540901}
   DebugUI: {fileID: 882964675}
+  PhotonView: {fileID: 5664936934948182916, guid: bd87956f1fc8e5f4f98c273e044e5b02, type: 3}
   PlayerFeed: {fileID: 7185701840565885383, guid: 484644c0710cb7d4ebe487164ba1188a, type: 3}
   FeedGrid: {fileID: 1218964857}
   Ping: {fileID: 509670529}

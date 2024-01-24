@@ -43,4 +43,5 @@ MonoBehaviour:
   - AddVelocity
   - JoinMansion
   - MoveplayerlocationsMansion
+  - MansionSpawn
   DisableAutoOpenWizard: 1
