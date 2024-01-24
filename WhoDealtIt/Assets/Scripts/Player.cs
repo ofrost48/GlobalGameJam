@@ -81,4 +81,31 @@ public class Player : Photon.MonoBehaviour
     {
         rb.velocity = Vector2.zero;
     }
+
+    [PunRPC]
+    public void MoveplayerlocationsMansion()
+    {
+        Debug.Log("MANSION WORKS");
+
+        if (PhotonNetwork.player.ID == 1001)
+        {
+            transform.position = new Vector2(1001f, 652f);
+        }
+        else if (PhotonNetwork.player.ID == 2001)
+        {
+            transform.position = new Vector2(350f, 652f);
+        }
+        else if (PhotonNetwork.player.ID == 3001)
+        {
+            transform.position = new Vector2(665f, 652f);
+        }
+        else if (PhotonNetwork.player.ID == 4001)
+        {
+            transform.position = new Vector2(1400f, 652f);
+        }
+        else if (PhotonNetwork.player.ID == 5001)
+        {
+            transform.position = new Vector2(1805f, 652f);
+        }
+    }
 }
