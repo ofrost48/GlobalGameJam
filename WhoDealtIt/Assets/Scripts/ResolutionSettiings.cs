@@ -17,7 +17,7 @@ public class ResolutionSettiings : MonoBehaviour
     public void Start()
     {
         //fullscreen stuff
-        Screen.fullScreen = true;
+        //Screen.fullScreen = true;
         fullscreen = true;
         //
 
@@ -64,13 +64,13 @@ public class ResolutionSettiings : MonoBehaviour
     public void SetRes(int resIndex)
     {
         Resolution resolution = filteredResolutions[resIndex];
-        if(fullscreen == true)
+        if(Screen.fullScreen == true)
         {
             Screen.SetResolution(resolution.width, resolution.height, true);
 
         }
 
-        else if(fullscreen == false)
+        else if(Screen.fullScreen == false)
         {
             Screen.SetResolution(resolution.width, resolution.height, false);
         }
