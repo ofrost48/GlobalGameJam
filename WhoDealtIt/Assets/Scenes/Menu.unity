@@ -7458,7 +7458,7 @@ MonoBehaviour:
   PingText: {fileID: 0}
   PauseUI: {fileID: 0}
   DebugUI: {fileID: 0}
-  PlayerFeed: {fileID: 7185701840565885383, guid: 484644c0710cb7d4ebe487164ba1188a, type: 3}
+  PlayerFeed: {fileID: 0}
   FeedGrid: {fileID: 0}
   Ping: {fileID: 0}
   SettingsUI: {fileID: 0}

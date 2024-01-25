@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using ExitGames.Client.Photon.StructWrapping;
+using System.Diagnostics;
 
 public class GameManager : MonoBehaviour
 {
@@ -155,7 +156,7 @@ public class GameManager : MonoBehaviour
 
     public void MansionSpawn()
     {
-        Debug.Log("Spawned at the mansion");
+        UnityEngine.Debug.Log("Spawned at the mansion");
 
         spawnPosition = 300f;
 
@@ -163,11 +164,10 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject player in playersInScene)
         {
-            Debug.Log(player.transform.position);
+            UnityEngine.Debug.Log(player.transform.position);
             player.transform.position = new Vector2(spawnPosition, 652f);
             spawnPosition += 350f;
         }
-
     }
 }
 
