@@ -156,12 +156,12 @@ public class GameManager : MonoBehaviour
             PhotonNetwork.room.IsVisible = false;
             PhotonNetwork.LoadLevel("Mansion");
 
-            MansionSpawn();
+            PlayerPrefab.GetComponent<Player>().MansionSpawn();
         }
         
     }
 
-    public void MansionSpawn()
+    /*public void MansionSpawn()
     {
         UnityEngine.Debug.Log("Spawned at the mansion");
 
@@ -177,6 +177,6 @@ public class GameManager : MonoBehaviour
         }
 
 
-    }
+    } */
 }
 

@@ -20,6 +20,8 @@ public class Player : Photon.MonoBehaviour
     float verticalInput;
     Vector2 moveDirection;
 
+    private float spawnPosition;
+
     private void Awake()
     {
         rb.gravityScale = 0.0f;
@@ -80,6 +82,30 @@ public class Player : Photon.MonoBehaviour
     private void Vector2Zero()
     {
         rb.velocity = Vector2.zero;
+    }
+
+    public void MansionSpawn()
+    {
+        photonView.RPC("MansionSpawnLocation", PhotonTargets.AllBuffered);
+    }
+
+    [PunRPC]
+    public void MansionSpawnLocation()
+    {
+        UnityEngine.Debug.Log("Spawned at the mansion");
+
+        spawnPosition = 300f;
+
+        GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in playersInScene)
+        {
+            UnityEngine.Debug.Log(player.transform.position);
+            player.transform.position = new Vector2(spawnPosition, 652f);
+            spawnPosition += 350f;
+        }
+
+
     }
 
 }

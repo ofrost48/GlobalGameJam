@@ -44,4 +44,5 @@ MonoBehaviour:
   - JoinMansion
   - MoveplayerlocationsMansion
   - MansionSpawn
+  - MansionSpawnLocation
   DisableAutoOpenWizard: 1
