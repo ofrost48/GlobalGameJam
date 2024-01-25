@@ -162,10 +162,17 @@ public class GameManager : MonoBehaviour
 
         GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("Player");
 
-        foreach (GameObject player in playersInScene)
+/*        foreach (GameObject player in playersInScene)
         {
             UnityEngine.Debug.Log(player.transform.position);
             player.transform.position = new Vector2(spawnPosition, 652f);
+            spawnPosition += 350f;
+        }*/
+
+        for(int i = 0; i < playersInScene.Length; i++)
+        {
+            UnityEngine.Debug.Log(playersInScene[i].transform.position);
+            playersInScene[i].transform.position = new Vector2(spawnPosition, 652f);
             spawnPosition += 350f;
         }
     }
