@@ -597,7 +597,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1573830393360309559}
-  - component: {fileID: 5180642032043753379}
   - component: {fileID: 4977630911279586727}
   - component: {fileID: 8940496028731214307}
   - component: {fileID: 5386814388123279312}
@@ -605,6 +604,7 @@ GameObject:
   - component: {fileID: 4061950591451849581}
   - component: {fileID: -8274837838911137539}
   - component: {fileID: 4031765977830879371}
+  - component: {fileID: -5114552396541103735}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -630,18 +630,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5180642032043753379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8822862982232370053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df96b81a2108b404f8adf89174e7a4b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &4977630911279586727
 Rigidbody2D:
   serializedVersion: 4
@@ -782,10 +770,10 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 3
+    TeleportIfDistanceGreaterThan: 1
+    InterpolateOption: 1
     InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
+    InterpolateLerpSpeed: 7
     InterpolateMoveTowardsAcceleration: 2
     InterpolateMoveTowardsDeceleration: 2
     InterpolateSpeedCurve:
@@ -830,7 +818,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    ExtrapolateOption: 1
+    ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -905,3 +893,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.4, y: 6.4}
   m_EdgeRadius: 0
+--- !u!114 &-5114552396541103735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8822862982232370053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3173af667f45d4493feae5b280f74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerPrefab: {fileID: 0}
+  GameCanvas: {fileID: 0}
+  SceneCamera: {fileID: 0}
+  PingText: {fileID: 0}
+  PauseUI: {fileID: 0}
+  DebugUI: {fileID: 0}
+  InMansion: 0
+  PlayerFeed: {fileID: 0}
+  FeedGrid: {fileID: 0}
+  Ping: {fileID: 0}
+  SettingsUI: {fileID: 0}

@@ -17,9 +17,11 @@ public class GameManager : MonoBehaviour
     public TMP_Text PingText;
     public GameObject PauseUI;
     public GameObject DebugUI;
+    public bool InMansion = false;
 
     private bool Off = false;
     private List<GameObject> players;
+
 
     public GameObject PlayerFeed;
     public GameObject FeedGrid;
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
     {
         PhotonNetwork.automaticallySyncScene = true;
         players = new List<GameObject> { };
-       
+
 
         if (GameCanvas != null)
         {
@@ -77,7 +79,7 @@ public class GameManager : MonoBehaviour
         float randomValue = Random.Range(-1f, 1f);
 
         players.Add(PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector2(this.transform.position.x * randomValue, this.transform.position.y), Quaternion.identity, 0));
-        for(int i = 0; i < players.Count; i++)
+        for (int i = 0; i < players.Count; i++)
         {
             UnityEngine.Debug.Log(players.Count);
         }
@@ -156,12 +158,13 @@ public class GameManager : MonoBehaviour
             PhotonNetwork.room.IsVisible = false;
             PhotonNetwork.LoadLevel("Mansion");
 
-            PlayerPrefab.GetComponent<Player>().MansionSpawn();
+            MansionSpawner();
         }
-        
+
     }
 
-    /*public void MansionSpawn()
+    [PunRPC]
+public void MansionSpawn()
     {
         UnityEngine.Debug.Log("Spawned at the mansion");
 
@@ -175,8 +178,41 @@ public class GameManager : MonoBehaviour
             player.transform.position = new Vector2(spawnPosition, 652f);
             spawnPosition += 350f;
         }
+    }
 
+    public void MansionSpawner()
+    {
+        if (PhotonNetwork.isMasterClient)
+        {
+            UnityEngine.Debug.Log("Spawned at the mansion");
 
-    } */
+            spawnPosition = 300f;
+
+            GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("Player");
+
+            foreach (GameObject player in playersInScene)
+            {
+                UnityEngine.Debug.Log(player.transform.position);
+                player.transform.position = new Vector2(spawnPosition, 652f);
+                spawnPosition += 350f;
+            }
+
+        }
+
+        // Find the local player GameObject
+        GameObject localPlayer = GameObject.Find("Player(Clone)");
+            if (localPlayer != null)
+            {
+                // Get the PhotonView component of the local player
+                PhotonView localPlayerPhotonView = localPlayer.GetComponent<PhotonView>();
+
+                // Now you can use localPlayerPhotonView as needed
+                if (localPlayerPhotonView != null)
+                {
+                    // Example: Call a method on the Player script using PhotonView
+                    localPlayerPhotonView.RPC("MansionSpawn", PhotonTargets.All);
+                }
+            }
+    } 
 }
 
