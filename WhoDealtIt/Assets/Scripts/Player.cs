@@ -84,9 +84,10 @@ public class Player : Photon.MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
+    [PunRPC]
     public void MansionSpawn()
     {
-        photonView.RPC("MansionSpawnLocation", PhotonTargets.AllBuffered);
+        photonView.RPC("MansionSpawnLocation", PhotonTargets.AllViaServer);
     }
 
     [PunRPC]
@@ -104,8 +105,5 @@ public class Player : Photon.MonoBehaviour
             player.transform.position = new Vector2(spawnPosition, 652f);
             spawnPosition += 350f;
         }
-
-
     }
-
 }
