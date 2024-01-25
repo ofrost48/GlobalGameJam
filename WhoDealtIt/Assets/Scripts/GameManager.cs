@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text PingText;
     public GameObject PauseUI;
     public GameObject DebugUI;
+
     private bool Off = false;
+    private List<GameObject> players;
 
     public GameObject PlayerFeed;
     public GameObject FeedGrid;
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         PhotonNetwork.automaticallySyncScene = true;
+        players = new List<GameObject> { };
        
 
         if (GameCanvas != null)
@@ -73,7 +76,11 @@ public class GameManager : MonoBehaviour
     {
         float randomValue = Random.Range(-1f, 1f);
 
-        PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector2(this.transform.position.x * randomValue, this.transform.position.y), Quaternion.identity, 0);
+        players.Add(PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector2(this.transform.position.x * randomValue, this.transform.position.y), Quaternion.identity, 0));
+        for(int i = 0; i < players.Count; i++)
+        {
+            UnityEngine.Debug.Log(players.Count);
+        }
         GameCanvas.SetActive(false);
         SceneCamera.SetActive(false);
 
