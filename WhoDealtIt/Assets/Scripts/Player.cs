@@ -15,7 +15,7 @@ public class Player : Photon.MonoBehaviour
     public SpriteRenderer sr;
     public TMP_Text playerNameText;
 
-    public bool isImposter = true;
+    public bool isImposter = false;
     public bool canAttackPlayer = false;
     public GameObject otherPlayer;
     public SpriteRenderer otherSR;
@@ -26,9 +26,19 @@ public class Player : Photon.MonoBehaviour
     Vector2 moveDirection;
 
     private float spawnPosition;
+    
 
     private void Awake()
     {
+        if (PhotonNetwork.isMasterClient)
+        {
+            isImposter = true;
+        }
+        else
+        {
+            isImposter = false;
+        }
+
         rb.gravityScale = 0.0f;
         moveSpeed = 150f;
 
@@ -36,6 +46,7 @@ public class Player : Photon.MonoBehaviour
         {
             playerCamera.SetActive(true);
             playerNameText.text = PhotonNetwork.playerName;
+            
         }
         else
         {
@@ -50,8 +61,13 @@ public class Player : Photon.MonoBehaviour
     {
         if (photonView.isMine)
         {
-            photonView.RPC("CheckHoriztonalValue", PhotonTargets.AllBuffered);
-            photonView.RPC("FlipCharacter", PhotonTargets.AllBuffered);
+            photonView.RPC("CheckHoriztonalValue", PhotonTargets.All);
+            photonView.RPC("FlipCharacter", PhotonTargets.All);
+        }
+        else
+        {
+            photonView.RPC("CheckHoriztonalValue", PhotonTargets.All);
+            photonView.RPC("FlipCharacter", PhotonTargets.All);
         }
 
         if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
