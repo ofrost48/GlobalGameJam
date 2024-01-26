@@ -53,6 +53,10 @@ public class Player : Photon.MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
         {
+            otherSR = otherPlayer.GetComponent<SpriteRenderer>();
+            otherSR.color = new Color(otherSR.color.r, otherSR.color.g, otherSR.color.b, 0);
+            otherSR.GetComponent<BoxCollider2D>().isTrigger = true;
+            //kill other player
             //otherPlayer.GetComponent<SpriteRenderer>().color = ;
             //kill other player
         }
@@ -73,16 +77,6 @@ public class Player : Photon.MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
-        if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
-        {
-            if (otherPlayer != null)
-            {
-                Debug.Log("killed other player: " + otherPlayer.name);
-                //complete killing of otherPlayer
-            }
-        }
-
     }
 
     private void MovePlayer()
