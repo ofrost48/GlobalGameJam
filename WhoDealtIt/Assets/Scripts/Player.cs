@@ -15,7 +15,7 @@ public class Player : Photon.MonoBehaviour
     public SpriteRenderer sr;
     public TMP_Text playerNameText;
 
-    public bool isImposter = true;
+    public bool isImposter = false;
     public bool canAttackPlayer = false;
     public GameObject otherPlayer;
     public SpriteRenderer otherSR;
@@ -30,6 +30,15 @@ public class Player : Photon.MonoBehaviour
 
     private void Awake()
     {
+        if (PhotonNetwork.isMasterClient)
+        {
+            isImposter = true;
+        }
+        else
+        {
+            isImposter = false;
+        }
+
         rb.gravityScale = 0.0f;
         moveSpeed = 150f;
 
