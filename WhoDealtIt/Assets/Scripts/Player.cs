@@ -26,6 +26,7 @@ public class Player : Photon.MonoBehaviour
     Vector2 moveDirection;
 
     private float spawnPosition;
+    
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class Player : Photon.MonoBehaviour
         {
             playerCamera.SetActive(true);
             playerNameText.text = PhotonNetwork.playerName;
+            
         }
         else
         {
@@ -50,8 +52,13 @@ public class Player : Photon.MonoBehaviour
     {
         if (photonView.isMine)
         {
-            photonView.RPC("CheckHoriztonalValue", PhotonTargets.AllBuffered);
-            photonView.RPC("FlipCharacter", PhotonTargets.AllBuffered);
+            photonView.RPC("CheckHoriztonalValue", PhotonTargets.All);
+            photonView.RPC("FlipCharacter", PhotonTargets.All);
+        }
+        else
+        {
+            photonView.RPC("CheckHoriztonalValue", PhotonTargets.All);
+            photonView.RPC("FlipCharacter", PhotonTargets.All);
         }
 
         if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
