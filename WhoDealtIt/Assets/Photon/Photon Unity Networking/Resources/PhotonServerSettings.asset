@@ -45,4 +45,8 @@ MonoBehaviour:
   - MoveplayerlocationsMansion
   - MansionSpawn
   - MansionSpawnLocation
+  - CheckIsMovingAnimFalse
+  - CheckIsMovingAnimTrue
+  - TrytoFlipFalse
+  - TrytoFlipTrue
   DisableAutoOpenWizard: 1
