@@ -65,7 +65,7 @@ public class Player : Photon.MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
         {
-            //otherPlayer.GetComponent<SpriteRenderer>().color.a = 255;
+            //otherPlayer.GetComponent<SpriteRenderer>().color = ;
             //kill other player
         }
     }
@@ -134,15 +134,16 @@ public class Player : Photon.MonoBehaviour
     {
         UnityEngine.Debug.Log("Spawned at the mansion");
 
-        spawnPosition = 300f;
+        float[] spawnPositions = { 400f, 640f, 900f, 1160f, 1430f};
+        int i = 0;
 
         GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("Player");
 
         foreach (GameObject player in playersInScene)
         {
             UnityEngine.Debug.Log(player.transform.position);
-            player.transform.position = new Vector2(spawnPosition, 652f);
-            spawnPosition += 350f;
+            player.transform.position = new Vector2(spawnPositions[i], 560);
+            i++;
         }
     }
 
