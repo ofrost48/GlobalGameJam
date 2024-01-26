@@ -15,6 +15,10 @@ public class Player : Photon.MonoBehaviour
     public SpriteRenderer sr;
     public TMP_Text playerNameText;
 
+    public bool isImposter;
+    public bool canAttackPlayer;
+    public GameObject otherPlayer;
+
     public float moveSpeed;
     float horizontalInput;
     float verticalInput;
@@ -56,6 +60,15 @@ public class Player : Photon.MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        if(Input.GetKeyDown(KeyCode.E) && isImposter && canAttackPlayer)
+        {
+            if(otherPlayer != null)
+            {
+                Debug.Log("killed other player: " + otherPlayer.name);
+                //complete killing of otherPlayer
+            }
+        }  
     }
 
     private void MovePlayer()
@@ -104,6 +117,24 @@ public class Player : Photon.MonoBehaviour
             UnityEngine.Debug.Log(player.transform.position);
             player.transform.position = new Vector2(spawnPosition, 652f);
             spawnPosition += 350f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            canAttackPlayer = true;
+            otherPlayer = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            canAttackPlayer = false;
+            otherPlayer = null;
         }
     }
 }
