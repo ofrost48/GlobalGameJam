@@ -7,6 +7,8 @@ public class minigame4 : MonoBehaviour
 {
     [SerializeField] private Slider throttleSlider;
     [SerializeField] private GameObject canvas;
+    [SerializeField] private Collider2D cockpitColllider;
+
     private bool switch1on;
     private bool switch2on;
     private float throttle;
@@ -36,6 +38,13 @@ public class minigame4 : MonoBehaviour
         if((switch1on == true) && (switch2on == true) && (throttle == 1))
         {
             canvas.SetActive(false);
+            cockpitColllider.enabled = false;
         }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        canvas.SetActive(true);
+        UnityEngine.Debug.Log("entered");
     }
 }
