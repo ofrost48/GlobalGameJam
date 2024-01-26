@@ -18,6 +18,7 @@ public class Player : Photon.MonoBehaviour
     public bool isImposter = true;
     public bool canAttackPlayer = false;
     public GameObject otherPlayer;
+    public SpriteRenderer otherSR;
 
     public float moveSpeed;
     float horizontalInput;
