@@ -15,8 +15,8 @@ public class Player : Photon.MonoBehaviour
     public SpriteRenderer sr;
     public TMP_Text playerNameText;
 
-    public bool isImposter;
-    public bool canAttackPlayer;
+    public bool isImposter = true;
+    public bool canAttackPlayer = false;
     public GameObject otherPlayer;
 
     public float moveSpeed;
@@ -68,7 +68,8 @@ public class Player : Photon.MonoBehaviour
                 Debug.Log("killed other player: " + otherPlayer.name);
                 //complete killing of otherPlayer
             }
-        }  
+        }
+        
     }
 
     private void MovePlayer()
@@ -122,15 +123,19 @@ public class Player : Photon.MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("ontriggerenter");
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("Can attack player");
             canAttackPlayer = true;
             otherPlayer = collision.gameObject;
+            Debug.Log(otherPlayer);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("ontriggerexit");
         if (collision.CompareTag("Player"))
         {
             canAttackPlayer = false;
