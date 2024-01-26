@@ -47,22 +47,10 @@ public class Player : Photon.MonoBehaviour
 
     private void Update()
     {
-        if ((horizontalInput != 0) || (verticalInput != 0))
-        {
-            photonView.RPC("CheckIsMovingAnimTrue", PhotonTargets.AllViaServer);
-        }
-        else
-        {
-            photonView.RPC("CheckIsMovingAnimFalse", PhotonTargets.AllViaServer);
-        }
-        if (horizontalInput < 0)
-        {
-            photonView.RPC("TrytoFlipTrue", PhotonTargets.AllViaServer);
-        }
-        else if (horizontalInput > 0)
-        {
-            photonView.RPC("TrytoFlipFalse", PhotonTargets.AllViaServer);
-        }
+
+        photonView.RPC("CheckHoriztonalValue", PhotonTargets.AllBuffered);
+        photonView.RPC("FlipCharacter", PhotonTargets.AllBuffered);
+
         if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
         {
             //otherPlayer.GetComponent<SpriteRenderer>().color = ;
@@ -134,7 +122,7 @@ public class Player : Photon.MonoBehaviour
     {
         UnityEngine.Debug.Log("Spawned at the mansion");
 
-        float[] spawnPositions = { 400f, 640f, 900f, 1160f, 1430f};
+        float[] spawnPositions = { 400f, 640f, 900f, 1160f, 1430f };
         int i = 0;
 
         GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("Player");
@@ -170,27 +158,28 @@ public class Player : Photon.MonoBehaviour
     }
 
     [PunRPC]
-    private void TrytoFlipTrue()
+    private void FlipCharacter()
     {
-        sr.flipX = true;
+        if (horizontalInput < 0)
+        {
+            sr.flipX = true;
+        }
+        else if (horizontalInput > 0)
+        {
+            sr.flipX = false;
+        }
     }
 
     [PunRPC]
-    private void TrytoFlipFalse()
+    private void CheckHoriztonalValue()
     {
-        sr.flipX = false;
+         if ((horizontalInput != 0) || (verticalInput != 0))
+        {
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
     }
-
-    [PunRPC]
-    private void CheckIsMovingAnimTrue()
-    {
-        anim.SetBool("isMoving", true);
-    }
-
-    [PunRPC]
-    private void CheckIsMovingAnimFalse()
-    {
-        anim.SetBool("isMoving", false);
-    }
-
 }
