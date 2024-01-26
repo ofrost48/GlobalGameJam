@@ -49,6 +49,4 @@ MonoBehaviour:
   - CheckIsMovingAnimTrue
   - TrytoFlipFalse
   - TrytoFlipTrue
-  - CheckHoriztonalValue
-  - FlipCharacter
   DisableAutoOpenWizard: 1
