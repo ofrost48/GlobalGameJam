@@ -7,6 +7,9 @@ public class Minigame1 : MonoBehaviour
 {
     [SerializeField] private Slider plungerDepth;
     [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject imageClean;
+    [SerializeField] private GameObject imageDirty;
+
 
     private bool swapCurrent;
     private float sliderVal;
@@ -48,9 +51,15 @@ public class Minigame1 : MonoBehaviour
         if(index == 10)
         {
             canvas.SetActive(false);
+            imageClean.SetActive(true);
+            imageDirty.SetActive(false);
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        canvas.SetActive(true);
+    }
 
 
 

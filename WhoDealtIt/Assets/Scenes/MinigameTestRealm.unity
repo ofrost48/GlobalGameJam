@@ -1617,6 +1617,21 @@ MonoBehaviour:
   candle3: {fileID: 1194751537}
   candle4: {fileID: 1417745740}
   candle5: {fileID: 338859185}
+  candle12: {fileID: 0}
+  candle22: {fileID: 0}
+  candle32: {fileID: 0}
+  candle42: {fileID: 0}
+  candle52: {fileID: 0}
+  candle1real: {fileID: 0}
+  candle2real: {fileID: 0}
+  candle3real: {fileID: 0}
+  candle4real: {fileID: 0}
+  candle5real: {fileID: 0}
+  candle1realLit: {fileID: 0}
+  candle2realLit: {fileID: 0}
+  candle3realLit: {fileID: 0}
+  candle4realLit: {fileID: 0}
+  candle5realLit: {fileID: 0}
   canvas: {fileID: 691329283}
 --- !u!1 &696100293
 GameObject:
@@ -2800,7 +2815,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3214,7 +3229,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4282,7 +4297,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1689743361
 MonoBehaviour:
   m_ObjectHideFlags: 0
