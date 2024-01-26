@@ -49,19 +49,19 @@ public class Player : Photon.MonoBehaviour
     {
         if ((horizontalInput != 0) || (verticalInput != 0))
         {
-            anim.SetBool("isMoving", true);
+            photonView.RPC("CheckIsMovingAnimTrue", PhotonTargets.AllBuffered);
         }
         else
         {
-            anim.SetBool("isMoving", false);
+            photonView.RPC("CheckIsMovingAnimFalse", PhotonTargets.AllBuffered);
         }
-        if (horizontalInput <0)
+        if (horizontalInput < 0)
         {
-            sr.flipX = true;
+            photonView.RPC("TrytoFlipTrue", PhotonTargets.AllBuffered);
         }
         else if (horizontalInput > 0)
         {
-            sr.flipX = false;
+            photonView.RPC("TrytoFlipFalse", PhotonTargets.AllBuffered);
         }
         if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
         {
@@ -86,21 +86,21 @@ public class Player : Photon.MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
+        if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
         {
-            if(otherPlayer != null)
+            if (otherPlayer != null)
             {
                 Debug.Log("killed other player: " + otherPlayer.name);
                 //complete killing of otherPlayer
             }
         }
-        
+
     }
 
     private void MovePlayer()
     {
         if (horizontalInput != 0 || verticalInput != 0)
-        { 
+        {
 
             photonView.RPC("AddVelocity", PhotonTargets.AllBuffered);
         }
@@ -167,4 +167,29 @@ public class Player : Photon.MonoBehaviour
             otherPlayer = null;
         }
     }
+
+    [PunRPC]
+    private void TrytoFlipTrue()
+    {
+        sr.flipX = true;
+    }
+
+    [PunRPC]
+    private void TrytoFlipFalse()
+    {
+        sr.flipX = false;
+    }
+
+    [PunRPC]
+    private void CheckIsMovingAnimTrue()
+    {
+        anim.SetBool("isMoving", true);
+    }
+
+    [PunRPC]
+    private void CheckIsMovingAnimFalse()
+    {
+        anim.SetBool("isMoving", false);
+    }
+
 }
