@@ -45,7 +45,16 @@ public class Player : Photon.MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-  
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
+        {
+            //otherPlayer.GetComponent<SpriteRenderer>().color.a = 255;
+            //kill other player
+        }
+    }
+
+
 
     private void FixedUpdate()
     {
