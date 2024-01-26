@@ -61,7 +61,7 @@ public class Player : Photon.MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetKeyDown(KeyCode.E) && isImposter && canAttackPlayer)
+        if(Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
         {
             if(otherPlayer != null)
             {
