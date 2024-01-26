@@ -47,7 +47,23 @@ public class Player : Photon.MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
+        if (horizontalInput != 0)
+        {
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
+        if (horizontalInput <0)
+        {
+            sr.flipX = true;
+        }
+        else if (horizontalInput > 0)
+        {
+            sr.flipX = false;
+        }
+        if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
         {
             //otherPlayer.GetComponent<SpriteRenderer>().color.a = 255;
             //kill other player
