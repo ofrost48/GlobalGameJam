@@ -728,6 +728,9 @@ MonoBehaviour:
   playerCamera: {fileID: 8196105664835379577}
   sr: {fileID: 8940496028731214307}
   playerNameText: {fileID: 5604700416981933116}
+  isImposter: 1
+  canAttackPlayer: 0
+  otherPlayer: {fileID: 0}
   moveSpeed: 0
 --- !u!114 &5664936934948182916
 MonoBehaviour:

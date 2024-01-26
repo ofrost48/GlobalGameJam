@@ -9,6 +9,8 @@ public class minigame3 : MonoBehaviour
     [SerializeField] private Slider pillow2;
     [SerializeField] private Slider sheet;
     [SerializeField] private GameObject canvas;
+    [SerializeField] private Collider2D bedCollider;
+    [SerializeField] private GameObject bedImage;
 
     private float slider1;
     private float slider2;
@@ -26,6 +28,7 @@ public class minigame3 : MonoBehaviour
         if((slider1 == 1) && (slider2 == 1) && (slider3 == 1))
         {
             canvas.SetActive(false);
+            bedImage.SetActive(true);
         }
     }
 
@@ -40,6 +43,14 @@ public class minigame3 : MonoBehaviour
     public void setSlider3()
     {
         slider3 = sheet.value;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        canvas.SetActive(true);
+        bedCollider.enabled = false;
+
+       
     }
 
 
