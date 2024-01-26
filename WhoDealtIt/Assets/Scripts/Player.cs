@@ -49,19 +49,19 @@ public class Player : Photon.MonoBehaviour
     {
         if ((horizontalInput != 0) || (verticalInput != 0))
         {
-            photonView.RPC("CheckIsMovingAnimTrue", PhotonTargets.AllBuffered);
+            photonView.RPC("CheckIsMovingAnimTrue", PhotonTargets.AllViaServer);
         }
         else
         {
-            photonView.RPC("CheckIsMovingAnimFalse", PhotonTargets.AllBuffered);
+            photonView.RPC("CheckIsMovingAnimFalse", PhotonTargets.AllViaServer);
         }
         if (horizontalInput < 0)
         {
-            photonView.RPC("TrytoFlipTrue", PhotonTargets.AllBuffered);
+            photonView.RPC("TrytoFlipTrue", PhotonTargets.AllViaServer);
         }
         else if (horizontalInput > 0)
         {
-            photonView.RPC("TrytoFlipFalse", PhotonTargets.AllBuffered);
+            photonView.RPC("TrytoFlipFalse", PhotonTargets.AllViaServer);
         }
         if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
         {
