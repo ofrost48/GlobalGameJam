@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text PingText;
     public GameObject PauseUI;
     public GameObject DebugUI;
+    public GameObject StartButton;
     public bool InMansion = false;
 
     private bool Off = false;
@@ -90,6 +91,11 @@ public class GameManager : MonoBehaviour
         {
             SettingsUI.GetComponentInChildren<Toggle>().isOn = true;
         }
+
+        if (PhotonNetwork.isMasterClient)
+        {
+            StartButton.SetActive(true);
+        }
     }
 
 
@@ -154,6 +160,7 @@ public class GameManager : MonoBehaviour
     {
         if (PhotonNetwork.isMasterClient)
         {
+            StartButton.SetActive(false);
             PhotonNetwork.room.IsOpen = false;
             PhotonNetwork.room.IsVisible = false;
             PhotonNetwork.LoadLevel("Mansion");

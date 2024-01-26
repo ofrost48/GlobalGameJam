@@ -60,8 +60,6 @@ public class Player : Photon.MonoBehaviour
             otherSR.color = new Color(otherSR.color.r, otherSR.color.g, otherSR.color.b, 0);
             otherSR.GetComponent<BoxCollider2D>().isTrigger = true;
             //kill other player
-            //otherPlayer.GetComponent<SpriteRenderer>().color = ;
-            //kill other player
         }
     }
 
@@ -134,8 +132,9 @@ public class Player : Photon.MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject localPlayer = GameObject.Find("Player(Clone)");
         Debug.Log("ontriggerenter");
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject != localPlayer)
         {
             Debug.Log("Can attack player");
             canAttackPlayer = true;
@@ -146,8 +145,9 @@ public class Player : Photon.MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        GameObject localPlayer = GameObject.Find("Player(Clone)");
         Debug.Log("ontriggerexit");
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject != localPlayer)
         {
             canAttackPlayer = false;
             otherPlayer = null;
