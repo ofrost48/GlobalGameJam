@@ -47,7 +47,7 @@ public class Player : Photon.MonoBehaviour
 
     private void Update()
     {
-        if (horizontalInput != 0)
+        if ((horizontalInput != 0) || (verticalInput != 0))
         {
             anim.SetBool("isMoving", true);
         }
