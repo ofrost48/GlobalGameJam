@@ -48,9 +48,11 @@ public class Player : Photon.MonoBehaviour
 
     private void Update()
     {
-
-        photonView.RPC("CheckHoriztonalValue", PhotonTargets.AllBuffered);
-        photonView.RPC("FlipCharacter", PhotonTargets.AllBuffered);
+        if (photonView.isMine)
+        {
+            photonView.RPC("CheckHoriztonalValue", PhotonTargets.AllBuffered);
+            photonView.RPC("FlipCharacter", PhotonTargets.AllBuffered);
+        }
 
         if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
         {
