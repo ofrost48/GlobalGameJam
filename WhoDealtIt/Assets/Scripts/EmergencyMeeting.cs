@@ -9,12 +9,7 @@ public class EmergencyMeeting : MonoBehaviour
     public GameObject pressBlank;
     public GameObject emergency;
     public GameManager gameManager;
-    public GameObject localPlayer;
 
-    private void Awake()
-    {
-        GameObject localPlayer = GameObject.Find("Player(Clone)");
-    }
 
     private void Update()
     {

@@ -2765,7 +2765,6 @@ GameObject:
   - component: {fileID: 1004611189}
   - component: {fileID: 1004611188}
   - component: {fileID: 1004611187}
-  - component: {fileID: 1004611186}
   - component: {fileID: 1004611190}
   m_Layer: 0
   m_Name: Bell
@@ -2774,29 +2773,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1004611186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004611185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed3173af667f45d4493feae5b280f74e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 8822862982232370053, guid: bd87956f1fc8e5f4f98c273e044e5b02, type: 3}
-  GameCanvas: {fileID: 0}
-  SceneCamera: {fileID: 0}
-  PingText: {fileID: 0}
-  PauseUI: {fileID: 0}
-  DebugUI: {fileID: 0}
-  InMansion: 0
-  PlayerFeed: {fileID: 0}
-  FeedGrid: {fileID: 0}
-  Ping: {fileID: 0}
-  SettingsUI: {fileID: 0}
 --- !u!61 &1004611187
 BoxCollider2D:
   m_ObjectHideFlags: 0
