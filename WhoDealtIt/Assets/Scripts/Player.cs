@@ -18,6 +18,7 @@ public class Player : Photon.MonoBehaviour
     public bool isImposter = true;
     public bool canAttackPlayer = false;
     public GameObject otherPlayer;
+    public SpriteRenderer otherSR;
 
     public float moveSpeed;
     float horizontalInput;
@@ -47,24 +48,18 @@ public class Player : Photon.MonoBehaviour
 
     private void Update()
     {
-        if ((horizontalInput != 0) || (verticalInput != 0))
+        if (photonView.isMine)
         {
-            photonView.RPC("CheckIsMovingAnimTrue", PhotonTargets.AllViaServer);
+            photonView.RPC("CheckHoriztonalValue", PhotonTargets.AllBuffered);
+            photonView.RPC("FlipCharacter", PhotonTargets.AllBuffered);
         }
-        else
-        {
-            photonView.RPC("CheckIsMovingAnimFalse", PhotonTargets.AllViaServer);
-        }
-        if (horizontalInput < 0)
-        {
-            photonView.RPC("TrytoFlipTrue", PhotonTargets.AllViaServer);
-        }
-        else if (horizontalInput > 0)
-        {
-            photonView.RPC("TrytoFlipFalse", PhotonTargets.AllViaServer);
-        }
+
         if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
         {
+            otherSR = otherPlayer.GetComponent<SpriteRenderer>();
+            otherSR.color = new Color(otherSR.color.r, otherSR.color.g, otherSR.color.b, 0);
+            otherSR.GetComponent<BoxCollider2D>().isTrigger = true;
+            //kill other player
             //otherPlayer.GetComponent<SpriteRenderer>().color = ;
             //kill other player
         }
@@ -85,16 +80,6 @@ public class Player : Photon.MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
-        if (Input.GetKeyDown(KeyCode.F) && isImposter && canAttackPlayer)
-        {
-            if (otherPlayer != null)
-            {
-                Debug.Log("killed other player: " + otherPlayer.name);
-                //complete killing of otherPlayer
-            }
-        }
-
     }
 
     private void MovePlayer()
@@ -134,7 +119,7 @@ public class Player : Photon.MonoBehaviour
     {
         UnityEngine.Debug.Log("Spawned at the mansion");
 
-        float[] spawnPositions = { 400f, 640f, 900f, 1160f, 1430f};
+        float[] spawnPositions = { 400f, 640f, 900f, 1160f, 1430f };
         int i = 0;
 
         GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("Player");
@@ -170,27 +155,28 @@ public class Player : Photon.MonoBehaviour
     }
 
     [PunRPC]
-    private void TrytoFlipTrue()
+    private void FlipCharacter()
     {
-        sr.flipX = true;
+        if (horizontalInput < 0)
+        {
+            sr.flipX = true;
+        }
+        else if (horizontalInput > 0)
+        {
+            sr.flipX = false;
+        }
     }
 
     [PunRPC]
-    private void TrytoFlipFalse()
+    private void CheckHoriztonalValue()
     {
-        sr.flipX = false;
+         if ((horizontalInput != 0) || (verticalInput != 0))
+        {
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
     }
-
-    [PunRPC]
-    private void CheckIsMovingAnimTrue()
-    {
-        anim.SetBool("isMoving", true);
-    }
-
-    [PunRPC]
-    private void CheckIsMovingAnimFalse()
-    {
-        anim.SetBool("isMoving", false);
-    }
-
 }
