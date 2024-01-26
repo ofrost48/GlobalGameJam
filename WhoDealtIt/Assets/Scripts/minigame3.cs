@@ -16,6 +16,9 @@ public class minigame3 : MonoBehaviour
     private float slider2;
     private float slider3;
 
+    public int windex = 0;
+
+
     void Start()
     {
         slider1 = 0f;

@@ -32,6 +32,8 @@ public class minigame2 : MonoBehaviour
 
     private int index;
 
+    public int windex = 0;
+
     private void Start()
     {
         index = 0;

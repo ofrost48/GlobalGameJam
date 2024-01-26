@@ -727,6 +727,7 @@ MonoBehaviour:
   candle4realLit: {fileID: 926264527}
   candle5realLit: {fileID: 1588713121}
   canvas: {fileID: 1325714040}
+  windex: 0
 --- !u!1 &97843148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,6 +1828,7 @@ MonoBehaviour:
   throttleSlider: {fileID: 1814383835}
   canvas: {fileID: 1851762615}
   cockpitColllider: {fileID: 202299075}
+  windex: 0
 --- !u!4 &202299074
 Transform:
   m_ObjectHideFlags: 0
@@ -7974,6 +7976,7 @@ MonoBehaviour:
   canvas: {fileID: 2017097562}
   imageClean: {fileID: 1830731079}
   imageDirty: {fileID: 1977119677}
+  windex: 0
 --- !u!61 &828959022
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14694,6 +14697,7 @@ MonoBehaviour:
   canvas: {fileID: 880508515}
   bedCollider: {fileID: 1599154183}
   bedImage: {fileID: 1444543601}
+  windex: 0
 --- !u!1 &1607453524
 GameObject:
   m_ObjectHideFlags: 0
@@ -15134,6 +15138,7 @@ MonoBehaviour:
   PingText: {fileID: 282569143}
   PauseUI: {fileID: 220295467}
   DebugUI: {fileID: 0}
+  StartButton: {fileID: 0}
   InMansion: 0
   PlayerFeed: {fileID: 7185701840565885383, guid: 484644c0710cb7d4ebe487164ba1188a, type: 3}
   FeedGrid: {fileID: 1660506138}
@@ -18097,6 +18102,54 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1852177432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1852177434}
+  - component: {fileID: 1852177433}
+  m_Layer: 0
+  m_Name: minigame controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1852177433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852177432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01ce11beffca0141b1f4cbe8d4bd54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game1: {fileID: 828959021}
+  game2: {fileID: 86651402}
+  game3: {fileID: 1599154185}
+  game4: {fileID: 202299072}
+--- !u!4 &1852177434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852177432}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -724.92017, y: -1804.6213, z: 8.294834}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1859908885
 GameObject:
   m_ObjectHideFlags: 0

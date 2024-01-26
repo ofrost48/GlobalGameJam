@@ -13,6 +13,8 @@ public class minigame4 : MonoBehaviour
     private bool switch2on;
     private float throttle;
 
+    public int windex = 0;
+
     private void Start()
     {
         switch1on = false;

@@ -15,6 +15,8 @@ public class Minigame1 : MonoBehaviour
     private float sliderVal;
     private int index;
 
+    public int windex = 0;
+
     public void Start()
     {
         swapCurrent = true;
